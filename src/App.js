@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import ChallangeList from './components/ChallengesList';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import AddChallange from './components/AddChallange';
 
 function App() {
+
+const [challenges, setChallenges] = useState([
+  // {id:1,month:`Jan`,description:`First Challange`},
+  // {id:2,month:`Feb`,description:`sec Challange`},
+  // {id:3,month:`Mar`,description:`third Challange`}
+])
+
+     useEffect(()=>{
+    fetchChallange();
+    },[])
+
+    const fetchChallange= async () =>{
+      try {
+        const response = await axios.get('http://localhost:8080/challenges');
+        //  console.log(response.data);
+           setChallenges(response.data)
+      } catch (error) {
+          console.error("Error fethving" , error) 
+      }
+     
+    };
+
+    const handleChallangeAdded=()=>{
+      fetchChallange();
+    }
+
+// const challenges = [
+//   {id:1,month:`Jan`,description:`First Challange`},
+//   {id:2,month:`Feb`,description:`sec Challange`},
+//   {id:3,month:`Mar`,description:`third Challange`}
+// ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>Monthly Challanges</h1>
+     <AddChallange onChallangeAdded={handleChallangeAdded}></AddChallange>
+     <ChallangeList challenges={challenges}></ChallangeList>
     </div>
   );
 }
