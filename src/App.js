@@ -20,7 +20,6 @@ const [challenges, setChallenges] = useState([
     const fetchChallange= async () =>{
       try {
         const response = await axios.get('http://localhost:8080/challenges');
-        //  console.log(response.data);
            setChallenges(response.data)
       } catch (error) {
           console.error("Error fethving" , error) 
@@ -40,7 +39,7 @@ const [challenges, setChallenges] = useState([
 
   return (
     <div className="container mt-5">
-     <h1>Monthly Challanges</h1>
+     <h1 className="text-center mb-4">Monthly Challanges</h1>
      <AddChallange onChallangeAdded={handleChallangeAdded}></AddChallange>
      <ChallangeList challenges={challenges}></ChallangeList>
     </div>

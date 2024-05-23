@@ -1,9 +1,12 @@
 function Challange({challange}){
     return (
-        <div>
-            <h4>{challange.month}</h4>
-            <h4>{challange.description}</h4>
-        </div>
+
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{challange.month}</h5>
+    </div>
+    <p class="mb-1">{challange.description}</p>
+    </a>
     );
 }
 
