@@ -19,7 +19,7 @@ const [challenges, setChallenges] = useState([
 
     const fetchChallange= async () =>{
       try {
-        const response = await axios.get('http://localhost:8080/challenges');
+        const response = await axios.get('http://taskapp-env.eba-88sstp6n.us-east-2.elasticbeanstalk.com/challenges');
            setChallenges(response.data)
       } catch (error) {
           console.error("Error fethving" , error) 

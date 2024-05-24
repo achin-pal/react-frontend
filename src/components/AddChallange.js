@@ -9,7 +9,7 @@ function AddChallange({onChallangeAdded}){
     const handleSubmit =async (e) =>{
       e.preventDefault();
       try {
-        await axios.post('http://localhost:8080/challenges', {month,description})
+        await axios.post('http://taskapp-env.eba-88sstp6n.us-east-2.elasticbeanstalk.com/challenges', {month,description})
         setMonth('');
         setDescription('');
         onChallangeAdded();
